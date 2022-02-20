@@ -105,13 +105,13 @@ contract("Oracles", async (accounts) => {
           );
         } catch (e) {
           // Enable this when debugging
-          console.log(
-            "\nError",
-            idx,
-            oracleIndexes[idx].toNumber(),
-            flight,
-            timestamp
-          );
+          // console.log(
+          //   "\nError",
+          //   idx,
+          //   oracleIndexes[idx].toNumber(),
+          //   flight,
+          //   timestamp
+          // );
         }
       }
     }
@@ -119,8 +119,8 @@ contract("Oracles", async (accounts) => {
 
   it("Updates Flight Status with enough responses", async () => {
     const key = await dataInstance.getFlightKey(flight, destination, timestamp);
-    const flightStruct = await dataInstance.flights(key);
-    assert.equal(+flightStruct.statusCode, STATUS_CODE_LATE_AIRLINE);
+    const _flight = await dataInstance.flights(key);
+    assert.equal(+_flight.statusCode, STATUS_CODE_LATE_AIRLINE);
   });
 
 });
